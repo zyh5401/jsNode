@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+		*	了解了git之后发现，git确实是一个比较方便的工具。
+		*git的基本命令；
+		进入目录： cd “目录名”
+		回退上个目录： cd ..
+		查看目录内文件： ll || ls
+		补全命令： 输入部分命令后按“tab”键；
+		方向键↑：前次使用的命令；
+		方向键↓：后次使用的命令；
+		清屏： clear；
+		保存全部文件到缓存区： git add .
+		保存单个文件到缓存区： git add 文件名
+		把缓存区的文件保存到版本区： git commit -m "注释"；
+		提交工作区文件到版本区：git commit -a -m "注释"（只针对保存过的文件）
+		把版本区文件提交到GitHub上： git push origin master;
+		查看项目状态： get status;
+		查看版本号：git log -> 退回 q；
+		查看工作区文件与暂存区的区别：git diff ；
+		缓存区与版本区区别：git diff --cached；
+		查看工作区与版本区区别：git diff master（master为分支名，一般为master）；
+		撤销缓存区某文件的操作：git reset HEAD 文件名；
+		还原之前在暂存区或者版本区的代码:checkout -- 文件名;
+		如果暂存区有代码，优先还原暂存区的代码，如果没有，还原成版本区的代码。
+		如果有2个以上文件，一个提交到版本库了，另一个忘记提交，可以先将没提交的文件拉到暂存区，然后通过git commit -m “注释” --amend ;
+		手动删除工作区代码后可用git rm xxx删除git中的信息；
+		删除本地文件hit信息：git rm -f xxx；
+		回滚文件版本：git checkout 版本记录 ；
+		回滚指定的版本：git reset --hard 版本记录。
+		git log找不到想要回滚的信息可用git reflog 来查找操作信息。
+
+
+		多人项目冲突解决方案：
+
+		1.需要把远程仓库的代码拉取到本地，然后进行对比。
+			git fetch 
+			
+		2.查看冲突
+			git diff master origin/master
+			
+		3.合并冲突
+			git merge origin/master
+			
+		4.手动修改冲突
+			
+		5.再提交一次
+		
+		6.push
+		
+
+
+		*/
+	</script>
+</body>
+</html>
