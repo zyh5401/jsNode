@@ -44,14 +44,71 @@
 
 			继承：自己有一套自己的特征还具备父类的特征；
 				拷贝继承：
-				1属性继承；调用父类并且改变this指向（用call改变）
-				2方法继承；遍历父类的原型，把每个方法都赋值给子类；
-				类式继承：性能最高
+				1属性继承：调用父类并且改变this指向（用call改变）；；
+				2方法继承：利用中间桥梁，把子类的原型链，链接父级。再把子类属性，或方法，付给子类；
+				注意，这种方法需要手动修改子类的prototype.constructor = 子类的构造函数；
 
-			包装对象：
-				当简单类型去掉用某个固定的属性或者方法的时候，那么系统内部会偷偷的把这个简单类型去转成对象类型，去掉用这个属性或方法。调用完成之后，这个包装对象就会销毁；
-			instanceof
-				运算符，左值是不是右值构造出来的；
+				包装对象：
+					当简单类型去掉用某个固定的属性或者方法的时候，那么系统内部会偷偷的把这个简单类型去转成对象类型，去掉用这个属性或方法。调用完成之后，这个包装对象就会销毁；
+				instanceof
+					运算符，左值是不是右值构造出来的；
+				hasOwnProperty：
+					某个属性是不是这个对乡下的；
+				toString
+					把别的数据类型转成字符串类型；
+					每个内置对象都有toString方法；
+					只要你使用alert，namealert函数会掉用tostring方法；
+					obj.toString->[object Object]
+					[object, 由什么内置函数构造出来的]
+					用途：
+					1转进制；
+					num.toString（要转的进制数） 
+					parseInt('110',2)//转进制
+					2判断内置对象的实例化对象的构造函数是谁
+					console.log(Object.prototype.toString.call(arr) ==='[object,Array]')
+					debugger(断点查询bug)
+
+				deepclone
+					深度克隆函数：
+					循环的时候，只要发现某个值为对象类型，那么继续循环这个对象类型，把对象类型中的值再赋值给另一个对象。
+					function deepclone(obj){
+						var toSting = Object.prototype.toString;
+						var o = obj.push?[]:{};
+						for(var attr in obj){
+						if(toSting.call(obj[attr]) === '[object Object]' || toSting.call(obj[attr]) === '[object Array]'){
+							o[attr] = deepclone(obj[attr]);
+							}else{
+								o[attr] = obj[attr];
+							}
+						}
+							return o;
+						}
+				组件：
+					是对数据和方法的简单封装；为了方便复用  
+					组件是有配置参数，能够做到有配置，走配置，没配置走默认；
+                                                                                                                                                                                                              
+
+				ES6
+				class 类写法
+				class+类名{
+					constructor（属性，属性2）{
+						this.属性 = 属性
+					}
+					方法（）{
+					}
+				}
+				注意，如果使用calss方式写类，那么prototype是不能够被改写的；
+				类的继承方式；
+				class 子类名 extends 父类名{
+					constructor（属性，属性，属性）{
+					super（属性，属性）
+					this.属性= 属性
+					//添加自己的属性
+					}
+					自己的方法（）{
+
+					}
+				}
 		*/
 	</script>
 </body>
