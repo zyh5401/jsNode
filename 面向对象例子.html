@@ -68,18 +68,25 @@
 			Darg.call(this,id);
 		}
 		
-		function paohui (id){}
-		var ph = new paohui;
+		function paohui (){}
 		
-		paohui.pototype = Darg.potoptype;
+		paohui.prototype = Darg.prototype;
+
+		var ph = new paohui;
 		
 		Darg2.prototype = ph;
 		
 		Darg2.prototype.move = function(ev){
-			var l = ev.clientX - this.disX ;
-			if(l<0)l=0;
-			this.div.style.left = l + 'px';
-			this.div.style.top = ev.clientY - this.disY + 'px'; 
+			var l = ev.clientX - this.dsx;
+			var t = ev.clientY - this.dsy;
+			if(l<0){l=0}else if(l>window.innerWidth-this.box.offsetWidth){
+				l = window.innerWidth-this.box.offsetWidth
+			}
+			if(t<0){t=0}else if(t>window.innerHeight-this.box.offsetHeight){
+				t = window.innerHeight-this.box.offsetHeight
+			}
+			this.box.style.left = l + 'px';
+			this.box.style.top = t + 'px'; 
 		}
 
 		var j = new Darg('div');
