@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<style>
+		#div{
+			width: 100px;
+			height: 100px;
+			background: #00B2DD;
+			position: absolute;
+			top:0;
+			left: 0;
+		}
+		#div2{
+			width: 100px;
+			height: 100px;
+			background: salmon;
+			position: absolute;
+			top:100px;
+			left: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id = "div"></div>
+	<div id = "div2"></div>
+	<script type="text/javascript">
+		function Darg (id){
+			this.box = document.getElementById(id);
+			this.dsx = 0;
+			this.dsy = 0;
+			this.init();
+		}
+		Darg.prototype.init = function(){
+			var _this = this;
+			this.box.addEventListener('mousedown',function(ev){
+				_this.down(ev)
+			})
+		}
+		Darg.prototype.down=function(ev){
+			
+			this.dsx = ev.clientX - this.box.offsetLeft;
+			this.dsy = ev.clientY - this.box.offsetTop;
+			var _this = this;
+			var Move = function(ev){
+				_this.move(ev)
+			}
+			var Up = function(ev){
+				_this.up(ev,Move,Up)
+			}
+			document.addEventListener('mousemove',Move);
+			document.addEventListener('mouseup',Up)
+		}
+		
+		Darg.prototype.move = function(ev){
+			this.box.style.top = ev.clientY - this.dsy + 'px';
+			this.box.style.left = ev.clientX - this.dsx + 'px';
+		}
+		Darg.prototype.up = function(ev,move,up){
+			document.removeEventListener('mousemove',move)
+			document.removeEventListener('mouseup',up)
+		}
+		
+		
+		function Darg2(id){
+			Darg.call(this,id);
+		}
+		
+		function paohui (id){}
+		var ph = new paohui;
+		
+		paohui.pototype = Darg.potoptype;
+		
+		Darg2.prototype = ph;
+		
+		Darg2.prototype.move = function(ev){
+			var l = ev.clientX - this.disX ;
+			if(l<0)l=0;
+			this.div.style.left = l + 'px';
+			this.div.style.top = ev.clientY - this.disY + 'px'; 
+		}
+
+		var j = new Darg('div');
+		var j2 = new Darg2('div2');
+		
+	</script>
+</body>
+</html>
