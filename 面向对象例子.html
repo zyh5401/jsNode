@@ -27,13 +27,16 @@
 	<div id = "div"></div>
 	<div id = "div2"></div>
 	<script type="text/javascript">
+		//创建一构造函数；
 		function Darg (id){
 			this.box = document.getElementById(id);
 			this.dsx = 0;
 			this.dsy = 0;
 			this.init();
 		}
+		//在该构造函数内的prototype内写上方法；
 		Darg.prototype.init = function(){
+			//事件函数内的指向变了，做出修改
 			var _this = this;
 			this.box.addEventListener('mousedown',function(ev){
 				_this.down(ev)
@@ -43,6 +46,7 @@
 			
 			this.dsx = ev.clientX - this.box.offsetLeft;
 			this.dsy = ev.clientY - this.box.offsetTop;
+			//Move和Up函数内的this指向变了，这里手动修正
 			var _this = this;
 			var Move = function(ev){
 				_this.move(ev)
@@ -63,19 +67,19 @@
 			document.removeEventListener('mouseup',up)
 		}
 		
-		
+		//类式继承，1、Darg2继承Darg的属性，并且利用call改变指向
 		function Darg2(id){
 			Darg.call(this,id);
 		}
-		
+		//利用paohui坐中间量
 		function paohui (){}
-		
+		//把父级的方法给炮灰，这样做是为了少运行一次父级的代码，减少浏览器压力
 		paohui.prototype = Darg.prototype;
-
+		//利用炮灰创建出一个实例化对象，该实例化对象有父级的方法
 		var ph = new paohui;
-		
+		//给子级继承父级的方法
 		Darg2.prototype = ph;
-		
+		//添加子级自己的方法。
 		Darg2.prototype.move = function(ev){
 			var l = ev.clientX - this.dsx;
 			var t = ev.clientY - this.dsy;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+	.active{
+		background: yellow;
+	}	
+	#box div{
+		width:200px;
+		height: 200px;
+		border: 1px solid #000;
+		display: none;
+	}
+	#box div.show{
+		display: block;
+	}
+</style>
+</head>
+<body>
+<div id="box">
+	<input type="button" value="按钮一" class="active" />
+	<input type="button" value="按钮二" />
+	<input type="button" value="按钮三" />
+	<div class="show">第一块内容</div>
+	<div>第二块内容</div>
+	<div>第三块内容</div>
+</div>
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>	
+<script type="text/javascript">
+	/*
+	 jQuery:
+		javaScript 的类库；
+		将一些复杂但是复用率高的逻辑，封装起来，直接调用，大大减少了代码量，对于低版本的兼容是处理过的。不用担心兼容问题。支持运动，特备在DOM中有着杰出的表现。www.jQuery.com
+		1.X版本兼容低版本；
+		3.X不兼容低版本；
+	
+	jQuery确实是一个非常好用的工具，大大减少了代码量，非常实用。jq的方法众多，网上也很全，就不在这里记录了。写个例子熟悉语法；
+	* 
+	* */
+	$(':button').click(function(){
+		$(':button').removeClass('active');
+		$('#box div').removeClass('show');//hide(500)动画效果
+		$(this).addClass('active');
+		$('#box div').eq($(this).index(':button')).addClass('show');					
+	});
+</script>
+</body>
+</html>
