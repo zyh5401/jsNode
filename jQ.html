@@ -70,7 +70,30 @@
 		在使用jq中碰到事件套事件，就会碰到，多次触发父级事件的时候再触发一次子级事件的时候，这时候子级触发事件的频率和父级是一样的；
 		使用off在子级事件函数前解绑；
 		阻止冒泡与组织默认行为：return false；
-	 * 
+	 * //*******
+	 * attr :操作自定义属性
+		prop ：表单元素属性
+		css	：css属性
+		text ： innerText
+		html ：innerHtml	
+		$('<li>') ：创建节点
+		append() ：插入节点
+		$('<li>').appendTo(ul).css() ：插入节点并入属性
+		$('').trigger('click.xx'); 
+		off() ：事件解绑
+		return false ：阻止默认时间
+		on('click',{name:'leo'},fn) ：加入自定义事件
+		p.on('click','li',fn) ：事件监听
+		stop().animate() ：动画效果排队执行，开始前先停止
+		$('').each(fn) ：循环
+		$.each(arr,fn) ：循环2
+		offset().top ：
+		position().top
+		outerHeight(true);
+		children ：找到子级（一层）
+		closest： 最近的父级
+		index ：下标
+		find(); ：找到子级
 	 * */
 </script>
 </body>
