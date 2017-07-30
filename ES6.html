@@ -106,6 +106,17 @@
 			2.
 				一旦状态改变，就不会再变.
 			
+			Promise.all:
+			Promise.all([load(arr[0]),load(arr[1]),load(arr[2]),load(arr[3]),load(arr[4]),load(arr[5])]).then(function(arr){
+		
+				for(var i=0;i<arr.length;i++){
+					document.body.appendChild(arr[i]);
+				}
+				
+				console.log('所有的都加载完毕');
+			}).catch(function(v){
+				console.log(v);
+			});
 			 */
 	</script>
 </body>
