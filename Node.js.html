@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		 
+		 export：导出；
+		输出变量名的时候要加{}，里边加函数名，或者直接是函数；
+		导出使用default）
+		default一般输出函数。
+		as 取别名；
+		import 引入；
+		
+		但是当前浏览器还不支持上边所说的ES6模块化语法，需要通过babel去转一下；把ES6的语法转成ES5的语法；
+		使用Webpack去将ES6的语法转成ES5的，开发的时候既可以使用ES6的新语法又能在浏览器下正常运行；
+		webpack又是基于node环境的。
+		需要安装node
+		node.js基于javaScript-----开发后端的语言
+		
+		
+		node 入门；
+		安装node
+		node.js基于JavaScript----开发后端的语言
+		
+		通过node 的npm去下载需要的文件。
+		
+		安装nrm可以切换速度更快的镜像
+		
+			npm install nrm --global
+			
+			切换:
+				nrm use xxx
+				
+			查看所有速度:
+				nrm test
+		
+		
+		webpack:
+			自动化构建工具
+			
+		1.入口
+			entry : './2.js'
+		2.出口
+			output:{
+				filename:'index.js',
+				path:path.resolve(__dirname,'build')
+			}
+		
+		3.模块
+			
+			module:{
+				rules:[
+					{
+						test:/\.js$/,
+						use:[]
+					}
+				]
+			}
+			
+		
+		4.插件
+		
+		
+		
+		如何构建？
+			
+			1.通过npm init初始化项目
+			
+			2.去项目中文件夹中安装webpack  npm install webpack --save
+			
+			在项目中配置你的webpack -> 新建一个webpack.config.js的文件
+			
+			
+		 * */
+	</script>
+</body>
+</html>
