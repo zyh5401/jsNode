@@ -9,7 +9,7 @@
 		/*
 		 ajax
 			Asynchronous JacaScript and XML(异步的js与XML)
-			
+
 			XML是一种数据格式：
 			<person>
 			<name></name>
@@ -18,12 +18,12 @@
 			{name:'name',age:18}
 			目前发展下，不只是XML还有json
 			*不管什么格式，数据都是字符串。
-			* 
+			*
 			一种前后端数据交互方式（前后端分离技术）；
 			1减少服务器压力
 			2优化用户体验
 			3使用异步方式与服务器通信，不需要打断用户的操作，具有更加迅速的响应能力；
-			
+
 			***ajax难点***
 			拿到数据之后，如何操作数据。
 			**********************************
@@ -34,7 +34,7 @@
 				3、按拨号键
 				4、等待对方接电话
 				5、通话
-				
+
 			对于ajax来说
 				1创建一个ajax对象
 					var ajax = new XMLHttpRequest();
@@ -53,38 +53,38 @@
 					'[]'
 					'{}'
 				需要用  json.parse()转成对象
-			
-			
+
+
 			get 与 post
-				ajax.open('get/post'，··· 
-				
+				ajax.open('get/post'，···
+
 				post： 通过send发送前端数据给后端；
 				相对安全（关于用户信息，用它）或者传递文件的时候
 				体积，理论上是无限大的（但是后端会做限制）
 				在send前设置一个setRequestHeader()
-				
+
 				git：通过浏览器的url来发送数据给后端；
 				相对来说不安全（只要不跟用户信息打交道或数据在一定范围，其他都可以使用get）
 				体积受到不同浏览器的限制
 				不需要设置请求头；
-				
+
 			url ：
 				中文转成url码：
 				encodeURI()
 				url码转成中文；
 				decodeURI()
-			
+
 			只要走url传输数据给后端 php必须加'?'
 			//**************
 			小列子：ajax的语法：
 			原声：
 			  	var user = document.getElementById('user');
 				var span = document.getElementById('span');
-		
+
 				user.onblur = function(){
 					//事件触发
 					const ajax = new XMLHttpRequest;
-					
+
 					ajax.open('post','php/post.php');// get不要请求头open这样写；('get','php/post.php?user'=user.value)
 					ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 					ajax.send('user='+user.value);
@@ -108,7 +108,7 @@
 			/*
 				      浏览器缓存：
 				        通过浏览器缓存的地址，如果每次访问就会把这个地址缓存下来，下次访问如果是同一个地址就会进入缓存。不会进行http请求了。减少了服务器端的压力。
-				
+
 				      有些时候后端改的东西因为有缓存机制，所以再次刷新页面的时候依然显示之前的内容。
 				      常规解决方式：在地址栏加点东西比如‘？’
 				    */
@@ -122,12 +122,12 @@
 				      2字开头： 成功
 				        200-207
 				      3卡头：重定向
-				
+
 				      4开头：请求出错
 				      常见404
 				      5开头：服务器问题
 				      常见500
-				
+
 				      所以就可以加判断
 				      if(ajax.status>=200 && ajax.status<=207 || ajax.status = 304){
 				        alert('ok')
@@ -143,16 +143,16 @@
 				    每个步骤都是用数字来表示的（0-4，0-3过程 4结果）ajax.readyState
 				    0是监控不到的，
 				    不管它进行到几步，只要到了数字4说明服务器接受并相应完成了；
-				
+
 				  XMLHttpRequest 对象的三个重要属性：
-				
+
 				    1监听事件
 				      onreadysdaystatechange
 				    2执行的步骤
 				      ajax.readyState
 				    3状态码
 				      ajax.status
-				
+
 				  onreadysdaystatechange放在send的前面与后边的区别；
 				  能多监听一次，意义不大；因为只有步骤4（ajax.readyState==4）才算完成；
 				*/
@@ -173,9 +173,90 @@
 				  eval:让字符串执行js代码；
 				    可能有点不安全：
 				  new Function('a,b',''+obj)
-				
+
 				*/
-			 * */
+				/*
+					ajax 上传文件
+
+						传统上传文件方式：from
+						<form action="post_file.php" method="post" enctype="multipart/form-data">
+							<input type="file" name="file" value="" />
+							<input type="submit" value="按钮"/>
+						</form>
+
+						当使用表单上传控件的时候，可以通过表单控件下的
+						files[0],找到上传的文件资源。
+						new FormData:
+							FormData对象可以组装一组用 XMLHttpRequest发送请求的键/值对
+							通过append方法把键值对放到FormData对象中，当send的时候直接传FormData对象即可。
+							列：
+							FormData.append('user','momo');
+							FormData.append('pass','12345');
+
+							ajax.send(FormData);
+
+						ajax.upload.onprogress 来监控当前上传的进度
+
+						这个事件对象中有
+
+						loaded  每次传输的进度
+
+						total   总进度
+
+				*/
+				/*
+						跨域：
+						ajax 的缺点；
+							1、不自持回退
+							2、安全
+
+						跨域（跨源）；
+							跨出一个范围
+							源：
+								同源策略
+
+								同源策略（Same origin policy）是一种约定。
+
+								它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。
+								可以说Web是构建在同源策略基础之上的，浏览器只是针对同源策略的一种实现。
+
+						同源：
+							同域名、同端口、同协议
+
+						跨源：
+							不同域名 || 不同端口 || 不同协议
+
+							域名：IP地址的别名（为了好记）。
+							端口：指的是计算机内部或交换机路由器的端口（不可见）。
+							协议:
+								http/https:网络超文本传输协议/网络超文本安全传输协议；
+								file：本地协议
+								ftp：文件传输协议
+
+						解决跨域问题：
+							1新版本的XMLHttpRequest + 后端设置请求头权限
+								Access-Control-Allow-Origin
+
+							2服务器代理：
+								使用服务器文件在默认情况下可以直接跨域，只要把这个服务器文件去请求文件同源就可以实现跨域。
+
+							3flash（传说）代码臃肿，马上不更新了，没试过；
+
+							4iframe(类似代理)
+
+							5jsonp
+								json+padding
+
+								json格式的数据内填充（填充式 json 或参数式 json）
+
+								json实现：
+									1、首先数据要为一个函数名加括号的数据
+									*fn([{},{},{}]);*
+									2、需要在*全局*下声明一个与数据的函数名一致的函数。
+									3、想在哪里使用就创建一个srcipt标签，src等于数据的地址即可
+				*/
+
+
 		</script>
 	</body>
 </html>
