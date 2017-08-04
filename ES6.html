@@ -7,7 +7,7 @@
 <body>
 	<script>
 		/*
-		
+
 		class类：
 			class 类写法
 			class+类名{
@@ -53,12 +53,12 @@
 			}
 			严格模式下，this是未定义；
 			事件绑定的函数中，还是那个触发元素；
-			
+
 			块：{}
 			一个块相当于一个作用域，子级能访问父级的变量/常量，父级无法访问子级的变量/常量；
-			
+
 			变量：可变的量；
-			var 
+			var
 			let:
 			1.没有预解析；
 			2.使用let之后不会在window下注册一个属性；
@@ -71,12 +71,12 @@
 			3.变量名不允许重复；
 			//******
 			includes(), startsWith(), endsWith() :
-	
+
 			includes()：返回布尔值，表示是否找到了参数字符串。
 			startsWith()：返回布尔值，表示参数字符串是否在源字符串的头部。
 			endsWith()：返回布尔值，表示参数字符串是否在源字符串的尾部。
 			//******
-	
+
 			Number.isNaN();
 			与isNaN的区别:
 				Number.isNaN不会通过Number去转，括号中的条件必须满足NaN
@@ -87,10 +87,10 @@
 			Number.MAX_SAFE_INTEGER === Math.pow(2, 53) - 1
 			Math.trunc(4.1) 抹小数 在正数的时候可以当做向下取整来用
 			Math.cbrt方法用于计算一个数的立方根。
-			
+
 			//*******
 			数组
-			Object.assign(默认,配置) 
+			Object.assign(默认,配置)
 			 * 1有配置有配置，没有走默认；
 			 	2拷贝。浅拷贝
 			//*****
@@ -105,19 +105,74 @@
 				和Rejected（已失败）。
 			2.
 				一旦状态改变，就不会再变.
-			
+
 			Promise.all:
 			Promise.all([load(arr[0]),load(arr[1]),load(arr[2]),load(arr[3]),load(arr[4]),load(arr[5])]).then(function(arr){
-		
+
 				for(var i=0;i<arr.length;i++){
 					document.body.appendChild(arr[i]);
 				}
-				
+
 				console.log('所有的都加载完毕');
 			}).catch(function(v){
 				console.log(v);
 			});
 			 */
+			 /*
+		 		Symbol(Symbol.iterator) 遍历器
+
+		 		function [Symbol.iterator](){
+		 			//遍历函数
+		 			return {
+		 					next(){
+		 						return {
+		 							value:xxx,
+		 							done:boolean (如果是false要循环，true终止循环)
+		 						}
+
+		 					}
+		 			}
+
+
+		 		}
+
+		 		只要有遍历器就能使用for of
+
+		 		Object.keys(obj),可以把对象中的key值提取出来放到一个数组中
+
+
+			Promise:
+				Promise对象有以下两个特点。
+					1.
+						Promise对象代表一个异步操作，有三种状态：
+						Pending（进行中）、
+						Resolved（已完成，又称 Fulfilled）
+						和Rejected（已失败）。
+
+
+					2.
+						一旦状态改变，就不会再变.
+
+				例子：
+				var p = new Promise(function(success,error){
+
+					setTimeout(function(){
+						a = 10;
+						if(a){
+							success(a);
+						}else{
+							error('失败');
+						}
+					},1000);
+
+				});
+
+				p.then(function(value){
+					alert(value);
+				},function(val){
+					alert(val);
+				});
+		 	*/
 	</script>
 </body>
 </html>
