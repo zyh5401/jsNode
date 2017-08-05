@@ -105,14 +105,11 @@
 				和Rejected（已失败）。
 			2.
 				一旦状态改变，就不会再变.
-
 			Promise.all:
 			Promise.all([load(arr[0]),load(arr[1]),load(arr[2]),load(arr[3]),load(arr[4]),load(arr[5])]).then(function(arr){
-
 				for(var i=0;i<arr.length;i++){
 					document.body.appendChild(arr[i]);
 				}
-
 				console.log('所有的都加载完毕');
 			}).catch(function(v){
 				console.log(v);
@@ -120,7 +117,6 @@
 			 */
 			 /*
 		 		Symbol(Symbol.iterator) 遍历器
-
 		 		function [Symbol.iterator](){
 		 			//遍历函数
 		 			return {
@@ -132,15 +128,10 @@
 
 		 					}
 		 			}
-
-
 		 		}
 
 		 		只要有遍历器就能使用for of
-
 		 		Object.keys(obj),可以把对象中的key值提取出来放到一个数组中
-
-
 			Promise:
 				Promise对象有以下两个特点。
 					1.
@@ -148,14 +139,10 @@
 						Pending（进行中）、
 						Resolved（已完成，又称 Fulfilled）
 						和Rejected（已失败）。
-
-
 					2.
 						一旦状态改变，就不会再变.
-
 				例子：
 				var p = new Promise(function(success,error){
-
 					setTimeout(function(){
 						a = 10;
 						if(a){
@@ -166,13 +153,26 @@
 					},1000);
 
 				});
-
 				p.then(function(value){
 					alert(value);
 				},function(val){
 					alert(val);
 				});
 		 	*/
+
+			/*
+
+				Number.isNaN();
+				与isNaN的区别:
+					Number.isNaN不会通过Number去转，括号中的条件必须满足NaN
+					才会是true
+				Number.parseInt()
+				看看数字是不是2^53||-2^53,是就true
+				Number.MAX_VALUE  计算机处理的最大的数字，超过这个值就是正无穷大。
+				Number.MAX_SAFE_INTEGER === Math.pow(2, 53) - 1
+				Math.trunc(4.1) 抹小数 在正数的时候可以当做向下取整来用
+				Math.cbrt方法用于计算一个数的立方根。
+			*/
 	</script>
 </body>
 </html>
