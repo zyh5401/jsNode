@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    /*
+    本地存储: HTML5中出现的window下的属性。
+			sessionStorage和/或localStorage
+		最好也需要在服务器环境下运行。
+		专门用来前端存储数据的。可以说是前端的数据库，一样存在浏览器中的。
+		localStorage存储的内容可以比cookie更多，比cookie操作（增删改）起来更便捷
+		每个域名 5M左右，据说未来还会扩展。
+
+		localStorage.setItem(key,val);
+		localStorage.getItem(key);
+		localStorage.removeItem(key);
+		localStorage.clear(); 清空
+
+		只要不删就一直在;
+    缺点：
+    1、浏览器的大小不统一，并且在IE8以上的IE版本才支持localStorage这个属性
+    2、目前所有的浏览器中都会把localStorage的值类型限定为string类型，这个在对我们日常比较常见的JSON对象类型需要一些转换
+    3、localStorage在浏览器的隐私模式下面是不可读取的
+    4、localStorage本质上是对字符串的读取，如果存储内容多的话会消耗内存空间，会导致页面变卡
+    5、localStorage不能被爬虫抓取到
+
+    事件：
+			storage事件
+				能够监听同域同浏览器的兄弟页面数据并且实时更新
+		只有手动删除浏览器的数据才会在当前页面上触发这个事件。
+
+    sessionStorage：基本和localStorage差不多，但是无法监听兄弟页面，生命周期关闭页面就死亡；
+
+    模板引擎：
+      <%for(){%>
+
+  		<%}%>
+
+    概念：
+  		MVC:
+  			Model:数据
+  			View:模板
+  			Controller:控制器
+
+
+		1.引入template
+		2.新建一个script type="text/html" id="view"（写模板语法）
+		3.全局创建一个元素（生成的结构就放在这个元素中）
+		4.创建数据
+		5.调用template(第二步的元素id,第四步的数据)
+		6.获取第三步的元素，把第五步的返回值放到这个元素中
+    */
+  </script>
+</body>
+</html>
