@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    /*
+    组件化开发：
+      实现低耦合高内聚，玩的是团队协作。
+      创建一个组件
+      状态 通讯 事件；
+      初始化状态在getInitialState;
+    */
+    /*
+    var App = React.createClass({
+      //创建一个组件
+      getInitialState:function(){
+        //初始化的状态；
+        return{
+          //要用return，注意是对象
+          num:0
+        }
+      },
+      fn:function(){
+        //自己定义的事件，函数名要和下边对应；
+        var nums = this.state.num;
+        //注意this。
+        nums+=100;
+        this.setState({
+          //设置状态
+          num:nums
+        })
+      },
+      render:function(){
+        //模板块，这里放的是数据
+        //这里可以写注释，可以写逻辑
+        //return里只能有一个大标签，不能有‘；’不能有注释只允许有模板
+        return (
+          <div>
+            <button onClick={this.fn}>按钮</button>
+            <p>hallo,word</p>
+            <span>{this.state.num}</span>
+          </div>
+        )
+      }
+    })
+    ReactDOM.render(
+      //渲染模块，注意是对象
+      <App />,
+      //this
+      document.getElementById('app')
+      //放到哪里；
+    )
+    */
+
+  </script>
+</body>
+</html>
