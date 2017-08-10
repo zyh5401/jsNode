@@ -12,6 +12,11 @@
       创建一个组件
       状态 通讯 事件；
       初始化状态在getInitialState;
+
+      bind():
+        只改this指向不调用
+      this.click = this.click.bind()
+      当state发生变化的时候，那么就会执行一次rend
     */
     /*
     var App = React.createClass({
@@ -53,6 +58,28 @@
       document.getElementById('app')
       //放到哪里；
     )
+    */
+
+    /*
+    react中的表单：
+      受限与非受限
+      受限：
+        只要是表单元素加了默认值为受限组件，默认值是根据状态来修改的，
+        只要状态不改那么里面的值就不会变。
+        select
+        checkbox
+        radio
+        textarea
+        只要是更改表单元素可以通用onChange
+        受限组件如何解决？
+          1.绑onChange事件
+          2.defaultValue/defaultChecked
+            在表单元素身上加了defaultValue/defaultChecked之后，
+            表单元素就不再是受限组件了
+
+    从父组件传递给子组件数据的方式是通过this.props来进行接收的。
+    单向数据类：
+        父组件的数据流向子组件是单向的，父级的数据只能父级修改，子级不允许
     */
 
   </script>
