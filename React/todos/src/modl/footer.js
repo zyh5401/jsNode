@@ -1,12 +1,37 @@
 import React,{Component} from "react";
-
+import FooterList from './footerList';
 class FootModel extends Component{
-    nclick=()=>{
-        this.props.nclick()
+    constructor(){
+        super();
+        this.state={
+            list:[
+                {name:'全部',checked:true,hash:'#/all'},
+                {name:'未完成',checked:false,hash:'#/active'},
+                {name:'已完成',checked:false,hash:'#/completed'}
+            ]
+        }
+    }
+    click=()=>{
+        this.props.nclick();
     }
     render(){
-        console.log(this.props)
-        return(
+        let {list} = this.state;
+        let {view,changeView} = this.props;
+        let listLi = null;
+        if(list.length){
+            listLi = list.map((e,i)=>{
+                let data ={
+                    name:e.name,
+                    hash:e.hash,
+                    checked:e.checked,
+                    key:i,
+                    view:view,
+                    changeView:changeView
+                }
+            return <FooterList {...data}/>
+          });
+        }
+        return (
             <footer
               className="footer" >
               <span className="todo-count">
@@ -14,23 +39,11 @@ class FootModel extends Component{
                 <span>条未选中</span>
               </span>
               <ul className="filters">
-                <li>
-                  <a href="#/all"
-                  className="selected"
-                  onClick = {this.aclck}
-                  >全部</a>
-                </li>
-                <li>
-                  <a href="#/active"
-                  onClick = {this.nclick}
-                  >未完成</a>
-                </li>
-                <li>
-                  <a href="#/completed">已完成</a>
-                </li>
+                {listLi}
               </ul>
               <button
                 className="clear-completed"
+                onClick = {this.click}
               >
                   清除完成项
               </button>

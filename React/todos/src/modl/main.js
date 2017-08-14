@@ -35,7 +35,7 @@ class LiModel extends Component{
     }
     enter=(ev)=>{
         if(ev.keyCode===13){
-            this.db.blur();
+            this.blur();
         }
     }
     render(){
