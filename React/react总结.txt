@@ -1,0 +1,110 @@
+react
+数据是单项数据绑定的；
+父级传向子级的数据只能由父级修改；
+react 的es5基本写法；
+let App = React.createClass({
+    gitInitialState:function(){
+        return{
+            //初始化数据
+        }
+    },
+    //事件函数，用于修改数据
+    click:function(){
+        //事件逻辑
+        this.setState({
+            //修改的数据
+            //执行完这个函数后程序会再次执行return
+        });
+    },
+    render:function(){
+            //这里写逻辑
+        return(
+            //模板，所有的结构写在这里；
+            //可以在元素内天街事件
+            <div></div>
+            //所有的标签元素都需要闭合，单标签也需要闭合
+        )
+    }
+}) ;
+ReactDOM,render(
+    <App />,
+    document.getElementById('app')
+    //挂载在id为app的元素下
+)
+*****************************************
+**现在用es6写；
+class App extends Compontent{
+    constructor(){
+    //如果不需要初始化数据，这里可以不写
+        super();
+        this.state = {
+            //初始化数据；
+        }
+    }
+    componentWillMount(){
+    //钩子
+      console.log('挂载之前')
+    }
+    componentDidMount(){
+    //这里可以写异步的请求数据
+      this.setState({
+        data:getItem('data')
+      });
+     ('挂载之后');
+      //钩子
+    }
+    componentWillUnmount(){
+     ('组件卸载');
+    }
+    click =()=>{
+    //与constructor平级的地方写事件；
+    }
+
+    render(){
+        //这里写逻辑可以创建属性可以做很多事情比如；
+        let data = {
+            ss1
+            ss2
+            ss3
+        }
+        //可以给子组件传递数据（别忘了import子组件）
+        //子组件接收数据在porps下；
+        let list = <Li {...data}>
+
+        //进入render就会把最新数据存到本地。
+         localStorage.setItem('data',JSON.stringify(data));
+        return(
+            //这里写模板，如果要输出在上边写好的对象用{xxx}
+            //顶层标签只允许有一个；
+            <div>{list}</div>
+        )
+    }
+
+}
+//获取本地的数据，如果本地有数据那么返回本地数据，否则返回[{checked:false,txt:'呵呵',id:1}]
+function getItem(data){
+  return JSON.parse(localStorage.getItem(data)) || [{checked:false,txt:'呵呵',id:1}];
+}
+//同样传出去
+ReactDOM,render(
+    <App />,
+    document.getElementById('app')
+    //挂载在id为app的元素下
+)
+其他属性：
+    ref:方便在当前组件下获取某个组件或者元素
+    列：
+        <header ref ={(elem)=>{this.head = elem}}></header>
+        要使用时就是this.head
+    组件卸载的方法:
+    ReactDOM.unmountComponentAtNode(document.getElementById("app"));
+关于子组件：
+    子组件如何要继承父组件的数据，那么只会进constructor一次，
+    当父组件的数据发生变化的时候，就不会再进constructor，会进render；
+限制数据类型：
+    PropTypes是react提供的数据验证，专门用来验证props的数据类型是否为
+    想要，如果不是会在控制台输出错误信息，方面快速定位错误
+    LiModel.propTypes = {
+      checked:PropTypes.bool,//这里要求checked的属性值是bool不是就报错
+      txt:PropTypes.string//一样
+    }
