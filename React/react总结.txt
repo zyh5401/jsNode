@@ -108,3 +108,30 @@ ReactDOM,render(
       checked:PropTypes.bool,//这里要求checked的属性值是bool不是就报错
       txt:PropTypes.string//一样
     }
+
+react-router:
+路由是为了不刷新页面进行页面内容转换；
+语法：
+ReactDOM.render(
+  (
+    <Router>
+      <div>
+        <Route path="/" component={App}/>
+      </div>
+    </Router>
+  ),
+  document.getElementById('app')
+)
+也可写在模板内；
+这是重定向；
+render() {
+  return (
+    <div className="App">
+      <Link to = "/ppx">跳转到皮皮虾那里</Link>
+      <Route path="/ppx" render={()=>{
+        return <Redirect to="/xiaolongxia"/>
+      }}/>
+      <Route path="/xiaolongxia" component={XLX} />
+    </div>
+  );
+}

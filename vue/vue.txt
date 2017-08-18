@@ -1,1 +1,13 @@
-����ѧ��vue��ȷʵ�ܱ�ը������������������ˡ�
+vue 基本语法
+<script type="text/javascript">
+  new Vue({
+    el:'#app',
+    //挂载点
+    data: {
+    //初始化数据的地方（键值对）
+    }
+  });
+</script>
+结构内直接写命令 例；
+<li v-for ="(val,key) in arr">{{输出的数据}}</li>
+    标签必须闭合，循环arr对象
