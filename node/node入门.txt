@@ -1,0 +1,23 @@
+Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。
+
+nodejs的特征：
+  1.单线程，
+  2.使用了一个事件驱动
+  3.非阻塞式 I/O 的模型，使其轻量又高效。
+
+非阻塞I/O说白了就是异步
+    不用等待前一个走完，下一个就能执行。
+
+nodeJS也是JS，所有操作数组、字符串的Node都支持
+最新版的Node也支持ES6
+
+const http = require('http');
+引入http后台
+创建一个服务器
+const server = http.createServer(function(req,res){
+  req.url  ：  可以拿到前端的信息
+  res.write('hehe')  给前端发送信息
+  res.end();
+})
+
+const fs = require('fs');
