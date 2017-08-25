@@ -6,7 +6,7 @@
 <style>
 	.active{
 		background: yellow;
-	}	
+	}
 	#box div{
 		width:200px;
 		height: 200px;
@@ -27,7 +27,7 @@
 	<div>第二块内容</div>
 	<div>第三块内容</div>
 </div>
-<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>	
+<script src="jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	/*
 	 jQuery:
@@ -35,15 +35,15 @@
 		将一些复杂但是复用率高的逻辑，封装起来，直接调用，大大减少了代码量，对于低版本的兼容是处理过的。不用担心兼容问题。支持运动，特备在DOM中有着杰出的表现。www.jQuery.com
 		1.X版本兼容低版本；
 		3.X不兼容低版本；
-	
+
 	jQuery确实是一个非常好用的工具，大大减少了代码量，非常实用。jq的方法众多，网上也很全，就不在这里记录了。写个例子熟悉语法；
-	* 
+	*
 	* */
 	$(':button').click(function(){
 		$(':button').removeClass('active');
 		$('#box div').removeClass('show');//hide(500)动画效果
 		$(this).addClass('active');
-		$('#box div').eq($(this).index(':button')).addClass('show');					
+		$('#box div').eq($(this).index(':button')).addClass('show');
 	});
 	/*
 	 jQ 注意事项：
@@ -56,7 +56,7 @@
 		children（'支持搜索范围（一层）'），找到子级（一层）
 		$('#ul i ').:;这样性能不好，先找到所有i，在来找ul下的这个i；
 		建议这样写；
-		const ul = $('#ul') 
+		const ul = $('#ul')
 		ul.find('i')
 		//*********************
 		jq对象转原生；；
@@ -75,11 +75,11 @@
 		prop ：表单元素属性
 		css	：css属性
 		text ： innerText
-		html ：innerHtml	
+		html ：innerHtml
 		$('<li>') ：创建节点
 		append() ：插入节点
 		$('<li>').appendTo(ul).css() ：插入节点并入属性
-		$('').trigger('click.xx'); 
+		$('').trigger('click.xx');
 		off() ：事件解绑
 		return false ：阻止默认时间
 		on('click',{name:'leo'},fn) ：加入自定义事件
@@ -94,8 +94,25 @@
 		closest： 最近的父级
 		index ：下标
 		find(); ：找到子级
-		
+
 	 * */
+
+	 /*
+	 插件扩展：
+	 	$.extend()里边写内容；
+		$.leftTrim()里边调用
+	$.extend()可以浅拷贝，还可以深拷贝，还可以写插件
+		$.extend({}，{})浅拷贝；
+		$.extend(true，{}，{})深拷贝；
+		$.extend({
+			function(){
+			写插件
+			}
+		})
+	  */
+	 /*
+	上传：
+	  */
 </script>
 </body>
 </html>
