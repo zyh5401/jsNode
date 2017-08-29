@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        #box{
+                width:100px;
+                height: 100px;
+                background: red;
+                position: absolute;
+                opacity: 0.5;
+        }
+        #box2{
+            width: 3000px;
+            background: yellow;
+            height: 100px;
+        }
+        /*body,html{
+            overflow: hidden;
+        }*/
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <div id="box2">
+
+    </div>
+    <input type="text" name="" value="">
+    <a href="http://www.baidu.com">1234</a>
+    <script type="text/javascript">
+    /*    三大事件
+        ontouchstart 按下
+        ontouchmove 划动
+        ontouchend 抬起
+    */
+   document.addEventListener('touchstart',function (ev) {
+       ev.preventDefault();
+   })
+    box.addEventListener('touchend',function(ev){
+        // var _this = this
+        // setTimeout(function (){
+        //     _this.style.display = "none";
+        // },200);
+        alert('消失啦')
+        this.style.display = "none";
+    })
+    var str = '';
+    for (var i = 0; i < 1000; i++) {
+        str+=i
+    }
+    box2.innerHTML = str;
+    var inps = document.getElementsByTagName('input')[0];
+    inps.addEventListener('touchstart',function (ev) {
+        ev.cancelBubble = true;
+    })
+    document.getElementById('box').style.width = '500px';
+
+    </script>
+</body>
+</html>
