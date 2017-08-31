@@ -1,0 +1,40 @@
+redux:
+redux是一个可预测的状态管理的库
+state :
+    immutably
+不可改变的：不能被其他关联事件或意外情况改变，要遵守这个原则；
+reducer：
+    是纯函数：不会有副作用并且可以预测的函数；
+
+定义：
+    react：
+        处理数据并渲染到页面；
+    redux：
+        专门负责管理数据
+在一个复杂的项目中，因为react的数据传输的特殊性，
+我们有时需要把某些组件的数据传递到其他组件时会相当麻烦，
+还有改变某些数据对象内的单个属性时会非常不好管理
+这时就需要使用redux 来进行数据的管理；
+redux的工作方式：
+    reducer=>action=>getState
+
+使用redux需要配置；（后补充）；
+首先引入redux；
+import {createStore, applyMiddleware} from 'redux'；
+这里的applyMiddleware是中间键；
+redux的工作方式：
+    reducer=>action=>getState
+首先创建一个reducer ,然后请求接口，然后操作数据
+reducer ：可以理解为处理state 的一个函数
+可以用reduce来表达；
+reduce：数组的一个方法：
+Array.reduce(function(前一个值（初次循环为初始值）,（当前值）,index,array),初始值)
+列：
+let rduArr = [1,2,3,4];
+let accu = rduArr.reduce( (state, curt, indx, array)=>{
+    // 11
+    // 11+1
+    // 11+1+1
+    return ++state ;
+}, 10 );
+action，接口：一个js对象，必须有一个type对象；
