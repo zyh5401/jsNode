@@ -26,6 +26,7 @@ redux的工作方式：
     reducer=>action=>getState
 首先创建一个reducer ,然后请求接口，然后操作数据
 reducer ：可以理解为处理state 的一个函数
+它接收一个旧的state，和一个type。生成一个新的state
 可以用reduce来表达；
 reduce：数组的一个方法：
 Array.reduce(function(前一个值（初次循环为初始值）,（当前值）,index,array),初始值)
@@ -37,4 +38,4 @@ let accu = rduArr.reduce( (state, curt, indx, array)=>{
     // 11+1+1
     return ++state ;
 }, 10 );
-action，接口：一个js对象，必须有一个type对象；
+action，用于分发任务：一个js对象，必须有一个type对象；
