@@ -2,7 +2,7 @@ import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
 
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
-
+//createHistory:历史记录管理；
 import reducers from './reducers';
 
 
